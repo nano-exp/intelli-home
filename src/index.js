@@ -1,8 +1,8 @@
 import Koa from 'koa'
 import bodyParser from '@koa/bodyparser'
+import serve from 'koa-static'
 import helloRouter from '#src/routes/hello.js'
 import echoRouter from '#src/routes/echo.js'
-import serve from 'koa-static'
 
 const app = new Koa()
 
