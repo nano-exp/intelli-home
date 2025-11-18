@@ -1,17 +1,15 @@
 import Koa from 'koa'
 import bodyParser from '@koa/bodyparser'
 import serve from 'koa-static'
-import { helloRouter } from '#src/routes/hello.js'
-import { echoRouter } from '#src/routes/echo.js'
+import { createHelloRouter } from '#src/routes/hello-router.js'
+import { createEchoRouter } from '#src/routes/echo-router.js'
 
 const app = new Koa()
 
 app.use(serve('public'))
 app.use(bodyParser())
-app.use(helloRouter.routes())
-app.use(helloRouter.allowedMethods())
-app.use(echoRouter.routes())
-app.use(echoRouter.allowedMethods())
+app.use(createHelloRouter())
+app.use(createEchoRouter())
 
 app.use((ctx) => {
   ctx.status = 404
